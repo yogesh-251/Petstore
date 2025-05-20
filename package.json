@@ -1,0 +1,8 @@
+{
+  "name": "petwear",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ]
+}
