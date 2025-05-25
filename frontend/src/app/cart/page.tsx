@@ -3,9 +3,14 @@
 import { useCartStore } from '@/lib/store/cart';
 import Image from 'next/image';
 import Link from 'next/link';
+// import Button from "@/components/Button";
+import { useRouter } from 'next/navigation';
+
 
 export default function CartPage() {
   const { items, removeFromCart, clearCart } = useCartStore();
+
+  const router = useRouter();
 
   const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
@@ -39,10 +44,18 @@ export default function CartPage() {
       <div className="text-xl font-bold">
         Total: ₹{total}
       </div>
-
-      <button onClick={clearCart} className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">
-        Clear Cart
-      </button>
+      
+      <div className="flex gap-4">
+        <button onClick={clearCart} className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">
+          Clear Cart
+        </button>
+        <button 
+          onClick={() => router.push('/checkout')}
+          className=" bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition">
+          Checkout
+        </button>
+        {/* <Button label='Checkout' className="px-4 py-2 rounded-lg"/> */}
+      </div>
     </div>
   );
 }

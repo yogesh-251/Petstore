@@ -4,14 +4,14 @@
 import React from 'react';
 import ProductCard from "@/components/ProductCard";
 import { supabase } from '@/lib/supabase/client';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 // This is a server component (by default). It returns JSX, the UI structure.
 export default async function HomePage() {
   const { data: products, error } = await supabase
     .from('products')
     .select('*');
-  console.log('All prods', products)
+  // console.log('All prods', products)
 
   if (error) return <div>Failed to load products</div>;
 
